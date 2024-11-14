@@ -72,6 +72,20 @@ export default function Slider() {
         slidesPerView={4}
         spaceBetween={30}
         centeredSlides={true}
+    breakpoints={{
+    
+    768: {
+      slidesPerView: 4,
+    },
+    425: {
+      slidesPerView: 2, 
+    },
+    
+    0: {
+      slidesPerView: 1, 
+    },
+  }}
+
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -84,7 +98,7 @@ export default function Slider() {
         <div>
           {swiperarray.slides.map((item) => (
             <SwiperSlide key={item.name}>
-              <div className="backdrop-blur-sm bg-white bg-opacity-20 border text-gray-900 text-sm rounded-md w-full p-2">
+              <div className="backdrop-blur-sm bg-white bg-opacity-20 border text-gray-900 rounded-md w-full p-2">
 
                 <div className="flex gap-5">
                   <div className=''>
@@ -95,8 +109,8 @@ export default function Slider() {
 
                   </div>
                   <div className=''>
-                    <h1 className='text-left pb-2 font-bold capitalize text-white'>{item.name}</h1>
-                    <p className='text-left text-xs leading-none text-white font-light '>
+                    <h1 className='text-left pb-2 font-bold capitalize leading-none text-sm text-white'>{item.name}</h1>
+                    <p className='text-left text-sm leading-none text-white font-light '>
                       Indulge in exquisite luxury and comfort at our premier hotel retreat.
                     </p>
                   </div>

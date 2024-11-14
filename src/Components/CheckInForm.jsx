@@ -17,10 +17,10 @@ const CheckInForm = () => {
 
   return (
     <div className='flex justify-center items-center m-2'>
-      <div className="flex lg:flex-row flex-col justify-center items-center rounded-md  md:w-3/4 w-full bg-slate-900 p-6 gap-4">
+      <div className="flex md:flex-row flex-col justify-center items-center rounded-md  md:max-w-7xl w-full bg-slate-900 p-10 gap-4">
         
         {/* Start Date Picker */}
-        <div className="relative w-full lg:w-auto">
+        <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             {/* Calendar Icon */}
             <svg
@@ -48,7 +48,7 @@ const CheckInForm = () => {
         <span className="hidden lg:block mx-4 text-gray-500">to</span>
 
         {/* End Date Picker */}
-        <div className="relative w-full lg:w-auto">
+        <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -75,7 +75,7 @@ const CheckInForm = () => {
         <span className="hidden lg:block mx-4 text-gray-500">OR</span>
 
         {/* Dropdown */}
-        <div className="relative w-full lg:w-auto">
+        <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -100,7 +100,7 @@ const CheckInForm = () => {
         </div>
 
         {/* Button */}
-        <button className="bg-white text-black rounded-md p-2 font-semibold w-full lg:w-auto">
+        <button className="bg-white text-black rounded-md p-2 font-semibold w-full">
           Check Availability
         </button>
       </div>
