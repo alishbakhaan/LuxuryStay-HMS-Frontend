@@ -6,7 +6,7 @@ export default function LoginModal({ isOpen, onClose }) {
             onClick={onClose}
         >
             <div
-                className="relative w-full max-w-lg px-4 h-full md:h-auto rounded-lg shadow bg-slate-800"
+                className="relative w-full max-w-lg px-4 h-full md:h-auto rounded-lg shadow-lg border bg-[#121313]"
                 onClick={(e) => e.stopPropagation()}
             >
 
@@ -38,7 +38,7 @@ export default function LoginModal({ isOpen, onClose }) {
                     <div>
                         <label
                             htmlFor="name"
-                            className="text-base font-medium block mb-2 text-gray-300"
+                            className="text-sm font-medium block mb-2 text-gray-300"
                         >
                             Your Name
                         </label>
@@ -46,7 +46,7 @@ export default function LoginModal({ isOpen, onClose }) {
                             type="text"
                             name="name"
                             id="name"
-                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
                             placeholder="example"
                             required
                         />
@@ -54,7 +54,7 @@ export default function LoginModal({ isOpen, onClose }) {
                     <div>
                         <label
                             htmlFor="email"
-                            className="text-base font-medium block mb-2 text-gray-300"
+                            className="text-sm font-medium block mb-2 text-gray-300"
                         >
                             Your email
                         </label>
@@ -62,7 +62,7 @@ export default function LoginModal({ isOpen, onClose }) {
                             type="email"
                             name="email"
                             id="email"
-                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
                             placeholder="example@gmail.com"
                             required
                         />
@@ -70,7 +70,7 @@ export default function LoginModal({ isOpen, onClose }) {
                     <div>
                         <label
                             htmlFor="email"
-                            className="text-base font-medium block mb-2 text-gray-300"
+                            className="text-sm font-medium block mb-2 text-gray-300"
                         >
                             Your Phone Number
                         </label>
@@ -78,7 +78,7 @@ export default function LoginModal({ isOpen, onClose }) {
                             type="number"
                             name="number"
                             id="number"
-                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
                             placeholder="+92316579894"
                             required
                         />
@@ -86,7 +86,7 @@ export default function LoginModal({ isOpen, onClose }) {
                     <div>
                         <label
                             htmlFor="password"
-                            className="text-base font-medium block mb-2 text-gray-300"
+                            className="text-sm font-medium block mb-2 text-gray-300"
                         >
                             New Password
                         </label>
@@ -95,19 +95,19 @@ export default function LoginModal({ isOpen, onClose }) {
                             name="password"
                             id="password"
                             placeholder="••••••••"
-                            className="sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
                             required
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="btn w-full text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                             Sign Up
                     </button>
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                        <a href="#" className="text-blue-700 hover:underline dark:text-blue-500">
+                        <a href="#" className="text-[#CDB9FF] hover:underline">
                             Already have an account?
                         </a>
                     </div>
