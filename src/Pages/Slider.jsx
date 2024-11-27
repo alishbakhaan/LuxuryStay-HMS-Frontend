@@ -33,17 +33,18 @@ const Slider = () => {
         }}
 
         modules={[Autoplay]}
-        className="mySwiper"
+        className="mySwiper w-full h-full"
       >
 
         <div>
           {swiperarray.slides.map((item) => (
-            <SwiperSlide key={item.name}>
+            <SwiperSlide className='relative flex justify-center items-center text-center text-lg h-[400px] rounded-[20px]' key={item.name}>
               <div className="border backdrop-blur-sm bg-white bg-opacity-10 text-gray-900 rounded-md w-full p-2">
 
                 <div className="flex gap-5">
                   <div className=''>
                     <img
+                    className='rounded-xl w-40 h-20 object-cover'
                       src={item.imageSrc}
                       alt={item.name}
                     />

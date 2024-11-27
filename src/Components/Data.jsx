@@ -1,20 +1,20 @@
-// import img1 from "../assets/img1.jpg"
+import img1 from "../assets/img1.jpg"
 import img2 from "../assets/img2.jpg";
-// import img3 from "../assets/img3.jpg";
+import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
 import img5 from "../assets/img5.jpg";
 import img6 from "../assets/img6.jpg";
 import img7 from "../assets/img7.jpg";
 import img8 from "../assets/img8.jpg";
 import img9 from "../assets/img9.jpg";
-// import img10 from "../assets/im10.jpg";
+import img10 from "../assets/img10.jpg";
 import img11 from "../assets/img11.jpg";
 import img12 from "../assets/img12.jpg";
-// import img13 from "../assets/img13.jpg";
-// import img14 from "../assets/img14.jpg";
-// import img15 from "../assets/img15.jpg";
+import img13 from "../assets/img13.jpg";
+import img14 from "../assets/img14.jpg";
+import img15 from "../assets/img15.jpg";
 import img16 from "../assets/img16.jpg";
-// import img17 from "../assets/img17.jpg";
+import img17 from "../assets/img17.jpg";
 import img18 from "../assets/img18.jpg";
 
 import roomimg1 from "../assets/roomimg (1).jpg";
@@ -42,6 +42,84 @@ import hotellobby4 from "../assets/hotellobby (4).jpg";
 import hotellobby5 from "../assets/hotellobby (5).jpg";
 import hotellobby6 from "../assets/hotellobby (6).jpg";
 import hotellobby7 from "../assets/hotellobby (7).jpg";
+
+export const blogCard = [
+  {
+    imgSrc: roomimg12,
+    title: "Top 5 Luxurious Suites for Your Next Stay",
+    description: "Discover the elegance and comfort of our top suites designed for a lavish experience.",
+    date: "November 15, 2024",
+  },
+  {
+    imgSrc: roomimg14,
+    title: "Unwind at Our Exclusive Spa Retreat",
+    description: "Indulge in relaxation with our world-class spa treatments and serene environment.",
+    date: "November 20, 2024",
+  },
+  {
+    imgSrc: roomimg15,
+    title: "A Culinary Journey: Fine Dining at Its Best",
+    description: "Savor the finest dishes curated by our award-winning chefs in an enchanting ambiance.",
+    date: "November 25, 2024",
+  },
+  {
+    imgSrc: roomimg16,
+    title: "Beachfront Bliss: Paradise Awaits You",
+    description: "Experience the beauty of pristine beaches and breathtaking sunsets from your suite.",
+    date: "November 30, 2024",
+  },
+];
+
+export const blog = {
+  addpost: [
+    { 
+      img: hotellobby, 
+      title: "The Evolution of Hotel Technology in 2024", 
+      content: "From mobile check-ins to AI-powered concierge services, explore how technology is reshaping the guest experience.", 
+      date: "5-May-2024" 
+    },
+    { 
+      img: hotellobby1, 
+      title: "The Art of Personalized Hospitality", 
+      content: "Learn how luxury hotels are redefining guest satisfaction with tailored experiences and services.", 
+      date: "12-May-2024" 
+    },
+  ],
+  recentpost: [
+    { img: roomimg1, title: "What to Look for When Choosing a Hotel", date: "15-Feb-2024" },
+    { img: roomimg2, title: "Top 10 Travel Tips for a Hassle-Free Vacation", date: "8-Mar-2024" },
+    { img: roomimg3, title: "Benefits of Booking Directly with Hotels", date: "20-Apr-2024" },
+    { img: roomimg4, title: "Benefits of Booking Directly with Hotels", date: "20-Apr-2024" },
+    { img: roomimg5, title: "Benefits of Booking Directly with Hotels", date: "20-Apr-2024" },
+    { img: roomimg6, title: "Benefits of Booking Directly with Hotels", date: "20-Apr-2024" },
+  ],
+  popular: [
+    {
+      imgSrc: hotellobby2,
+      title: "Top 5 Luxury Hotels to Experience in 2024",
+    },
+    {
+      imgSrc: hotellobby3,
+      title: "A Traveler’s Guide to Booking the Perfect Stay",
+    },
+    {
+      imgSrc: hotellobby4,
+      title: "How to Make the Most of Your Hotel Amenities",
+    },
+    {
+      imgSrc: hotellobby5,
+      title: "Trends in Hospitality: What’s Changing in 2024?",
+    },
+    {
+      imgSrc: hotellobby6,
+      title: "Exploring Boutique Hotels: Unique Experiences Await",
+    },
+    {
+      imgSrc: hotellobby7,
+      title: "A Traveler’s Guide to Booking the Perfect Stay",
+    },
+  ],
+};
 
 export const navigation = {
   pages: [
@@ -182,6 +260,88 @@ export const swiperarray = {
 
   ]
 }
+
+// slidesperview
+export const slidesview = [
+    {
+      name: 'Bath Relaxation',
+      href: '#',
+      imageSrc: img1,
+    },
+    {
+      name: 'Family Room',
+      href: '#',
+      imageSrc: img2,
+    },
+    {
+      name: 'Penthouse Suite',
+      href: '#',
+      imageSrc: img3,
+    },
+    {
+      name: 'Lounge & Bar',
+      href: '#',
+      imageSrc: img4,
+    },
+    {
+      name: 'Fitness Center',
+      imageSrc: img8,
+    },
+    {
+      name: 'Junior Suite',
+      imageSrc: img5,
+    },
+    {
+      name: 'Meeting Room',
+      imageSrc: img6,
+    },
+    {
+      name: 'Dining Area',
+      imageSrc: img7,
+    },
+    {
+      name: 'Bath Relaxation',
+      href: '#',
+      imageSrc: img9,
+    },
+    {
+      name: 'Family Room',
+      href: '#',
+      imageSrc: img10,
+    },
+    {
+      name: 'Penthouse Suite',
+      href: '#',
+      imageSrc: img11,
+    },
+    {
+      name: 'Lounge & Bar',
+      href: '#',
+      imageSrc: img12,
+    },
+    {
+      name: 'Fitness Center',
+      imageSrc: img13,
+    },
+    {
+      name: 'Junior Suite',
+      imageSrc: img14,
+    },
+    {
+      name: 'Meeting Room',
+      imageSrc: img15,
+    },
+    {
+      name: 'Dining Area',
+      imageSrc: img16,
+    },
+    {
+      name: 'Dining Area',
+      imageSrc: img17,
+    },
+
+
+  ]
 
 // gallery
 

@@ -24,7 +24,7 @@ const BookRoom = () => {
             </div>
             <div className='bg-[#313135] max-w-4xl mx-auto rounded-3xl shadow-2xl'>
 
-                <div className='bg-opacity-90 bg-cyan-800 rounded-tl-3xl rounded-tr-3xl py-5 px-8'>
+                <div className=' bg-cyan-500 rounded-tl-3xl rounded-tr-3xl py-5 px-8'>
                     <div className="flex justify-between items-center">
 
                         <div>

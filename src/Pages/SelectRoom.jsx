@@ -7,8 +7,8 @@ const SelectRoom = () => {
 
   return (
     <div className="m-5">
-      <h1 className="text-4xl font-bold text-white py-5 font-[Unbounded]">Choose Your Room</h1>
-
+      <h1 className="text-4xl font-bold text-white py-5 font-[Unbounded] text-center">Choose Your Room</h1>
+      <div className="max-w-5xl m-auto">
       {rooms.map((room) => (
         <div key={room.id} className="mb-5 bg-[#313135] text-white rounded-lg p-5 shadow-2xl">
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
@@ -56,9 +56,9 @@ const SelectRoom = () => {
               </div>
 
               <p>{room.persons}</p>
-              <p className="text-[#CDB9FF]">Night Stay</p>
+              <p className="text-[#CDB9FF] pb-2">Night Stay</p>
               <Link to={'/bookroom'}>          
-              <button className="p-4 rounded-lg bg-gradient-to-r btn">
+              <button className="py-1 px-2 rounded-lg bg-gradient-to-r btn">
                 Book Room
               </button>
               </Link>
@@ -66,6 +66,7 @@ const SelectRoom = () => {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 };
