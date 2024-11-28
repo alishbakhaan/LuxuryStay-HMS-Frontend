@@ -1,9 +1,44 @@
 import { faDownload, faReceipt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
-const PaymentRoom = () => {
-    
+const InvoiceRoom = () => {
+    const { reservationId } = useParams();
+    const navigate = useNavigate();
+    const [reservationDetails, setReservationDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        if (!reservationId) {
+            alert('Reservation ID not found!');
+            navigate('/');
+            return;
+        }
+        const fetchReservationDetails = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations/${reservationId}`, {
+                    method: "GET",
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch reservation details.");
+                }
+
+                const result = await response.json();
+                setReservationDetails(result);
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchReservationDetails();
+    }, [reservationId, navigate]);
+    if (loading) {
+        return <p>Loading reservation details...</p>;
+    }
+
     return (
         <>
             <section className="isolate py-20">
@@ -38,7 +73,7 @@ const PaymentRoom = () => {
                         {/* <!-- Card form --> */}
                         
                             <div className='py-6'>
-                                <h2 className="text-2xl font-bold">Hey Anna,</h2>
+                                <h2 className="text-2xl font-bold">Hey {reservationDetails.guest.profile.name},</h2>
                                 <p className="text-sm font-extralight mt-2">
                                 Your room has been successfully booked! Enjoy a luxurious stay at our hotel. Please bring this
                                 invoice receipt with you upon arrival for a smooth check-in experience. We look forward to welcoming you! 
@@ -61,12 +96,12 @@ const PaymentRoom = () => {
                                     <div className="flex justify-between">
                                         <div>
                                             <p className="text-gray-500 text-sm">Client</p>
-                                            <strong>John McClane</strong>
+                                            <strong>{reservationDetails.guest.profile.name}</strong>
                                             <p className="text-sm">
-                                                989 5th Avenue, New York, 55832
+                                                {/* 989 5th Avenue, New York, 55832 */}
                                                 <br />
                                                 <a href="mailto:john@email.com" className="text-[#CDB9FF]">
-                                                    john@email.com
+                                                {reservationDetails.guest.profile.contact.email}
                                                 </a>
                                             </p>
                                         </div>
@@ -83,25 +118,25 @@ const PaymentRoom = () => {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td className="px-0 py-2">Delux Suite</td>
-                                            <td className="px-0 py-2">2 Persons</td>
-                                            <td className="px-0 py-2 text-right">899 USD</td>
+                                            <td className="px-0 py-2">{reservationDetails.room.roomName}</td>
+                                            <td className="px-0 py-2">{reservationDetails.room.persons}</td>
+                                            <td className="px-0 py-2 text-right">{reservationDetails.totalAmount}</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <div className="mt-5">
-                                    <div className="flex justify-end">
+                                    {/* <div className="flex justify-end">
                                         <p className="text-gray-500 mr-3">Subtotal:</p>
                                         <span>$390.00</span>
                                     </div>
                                     <div className="flex justify-end">
                                         <p className="text-gray-500 mr-3">Discount:</p>
                                         <span>-$40.00</span>
-                                    </div>
+                                    </div> */}
                                     <div className="flex justify-end mt-3">
                                         <h5 className="mr-3 text-lg font-bold">Total:</h5>
-                                        <h5 className="text-lg font-bold text-cyan-500">$399.99 USD</h5>
+                                        <h5 className="text-lg font-bold text-cyan-500">{reservationDetails.totalAmount}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -125,4 +160,12 @@ const PaymentRoom = () => {
     )
 }
 
-export default PaymentRoom
+export default InvoiceRoom
+
+
+{/* <p>{reservationDetails.room.roomName}</p>
+<p>{reservationDetails.guest.profile.name}</p>
+<p>{reservationDetails.guest.profile.contact.email}</p>
+<p>{reservationDetails.room.roomNumber}</p>
+<p>{reservationDetails.room.persons}</p>
+<p>{reservationDetails.totalAmount}</p> */}

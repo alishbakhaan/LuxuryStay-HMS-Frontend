@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '../index.css';
 import { Autoplay } from 'swiper/modules';
-import { swiperarray } from '../Components/Data';
+import { swiperarray } from './Data';
 
 const Slider = () => {
   return (

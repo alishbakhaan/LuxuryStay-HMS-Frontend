@@ -14,8 +14,9 @@ import roomimg17 from "../assets/roomimg10.jpg";
 
 const MasnoryGallery = () => {
     return (
-        <div className='max-w-6xl m-auto md:pt-10'>
-            <h1 className='text-4xl font-bold text-white py-10 font-[Unbounded] text-center'>Our Gallery</h1>
+        <div className='mx-10 md:pt-10'>
+             <div className='h-1 w-20 bg-cyan-400 rounded-xl mx-auto my-5'></div>
+            <h1 className='text-4xl font-bold text-white pb-10 font-[Unbounded] text-center'>Our Gallery</h1>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mx-4">
                 <div className="grid gap-4">
                     <div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Fragment, useState } from 'react'
-import { navigation } from "../Components/Data";
+import { navigation } from "./Data";
 import {
   Dialog,
   DialogBackdrop,
@@ -17,8 +17,8 @@ import {
 } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../assets/luxurylogo.png'
-import LoginModal from '../Components/LoginModal';
-import SignUp from '../Components/SignUp'
+import LoginModal from '../Booking/LoginModal';
+import SignUp from '../Booking/SignUp'
 import { Link } from "react-router-dom";
 
 export default function Navbar() {

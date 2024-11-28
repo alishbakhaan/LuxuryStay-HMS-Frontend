@@ -1,7 +1,7 @@
 import React from 'react'
 import background from '../../public/assets/bg.mp4'
-import Slider from './Slider'
-import CheckInForm from '../Components/CheckInForm'
+import Slider from '../Components/Slider'
+import CheckInForm from '../Booking/CheckInForm'
 
 const Hero = () => {
     return (

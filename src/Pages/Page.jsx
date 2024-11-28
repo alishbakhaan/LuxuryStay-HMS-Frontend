@@ -1,17 +1,19 @@
 import Hero from "./Hero"
-import Slider from "./Slider";
+import Slider from "../Components/Slider";
 import MasnoryGallery from "./MasnoryGallery";
 import BlogCard from "./BlogCard";
 import Services from "./Services";
+import ContactUs from "./ContactUs";
 
 const Page = () => {
   return (
     <>
-      {/* <Hero/>
+      <Hero/>
       <Slider/>
       <MasnoryGallery/>
-      <BlogCard/> */}
+      <BlogCard/>
       <Services/>
+      <ContactUs/>
     </>
   )
 }

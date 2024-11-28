@@ -43,6 +43,16 @@ import hotellobby5 from "../assets/hotellobby (5).jpg";
 import hotellobby6 from "../assets/hotellobby (6).jpg";
 import hotellobby7 from "../assets/hotellobby (7).jpg";
 
+export const services = [
+  { info: "Room Management", name: "Experience the pinnacle of luxury with smart room technology.", tag: "High-speed Wi-Fi" },
+  { info: "Concierge Services", name: "Our concierge team is available around the clock to cater to your every desire.", tag: "Private transportation" },
+  { info: "Spa and Wellness", name: "Indulge in ultimate relaxation at our luxury spa, offering a range of treatments.", tag: "Signature massages" },
+  { info: "Business Facilities", name: "We provide state-of-the-art meeting rooms and conference halls with modern amenitie.", tag: "Administrative assistance" },
+  { info: "Dining Experiences", name: "Savor the finest cuisine crafted by award-winning chefs at our on-site restaurants and bars.", tag: "Customizable menu options" },
+  { info: "Event Management", name: "Whether it’s a wedding or private celebration, our dedicated event planning team ensures every detail is taken care of.", tag: "Customizable venues" },
+  { info: "Member Benefits", name: "Join our Luxury Stay Rewards Program to unlock exclusive benefits, including early check-in, late check-out, complimentary upgrades, and more.", tag: "Access to member-only events" },
+]
+
 export const blogCard = [
   {
     imgSrc: roomimg12,
@@ -53,7 +63,7 @@ export const blogCard = [
   {
     imgSrc: roomimg14,
     title: "Unwind at Our Exclusive Spa Retreat",
-    description: "Indulge in relaxation with our world-class spa treatments and serene environment.",
+    description: "Indulge in relaxation with our world-class spa treatments and serene environment. Join our Hotel to unlock exclusive benefits",
     date: "November 20, 2024",
   },
   {
@@ -65,7 +75,7 @@ export const blogCard = [
   {
     imgSrc: roomimg16,
     title: "Beachfront Bliss: Paradise Awaits You",
-    description: "Experience the beauty of pristine beaches and breathtaking sunsets from your suite.",
+    description: "Experience the beauty of beaches and breathtaking sunsets. we provide meeting rooms and conference halls.",
     date: "November 30, 2024",
   },
 ];
@@ -125,9 +135,10 @@ export const navigation = {
   pages: [
     { name: 'Home', href: '/' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'Booking', href: '/selectroom' },
-    { name: 'ContactUs', href: '/contact' },
+    { name: 'Booking', href: '/selectroom' },  
     { name: 'Blog', href: '/blog' },
+    { name: 'Services', href: '/services' },
+    { name: 'ContactUs', href: '/contact' },
   ],
   categories: [
     {
@@ -376,12 +387,35 @@ export const gallery = {
     ],
   Resort:
     [
-      img6, img7
+      roomimg9,
+      roomimg10,
+      roomimg11,
+      roomimg12,
+      roomimg13,
+      roomimg14,
+      roomimg15,
+      roomimg16,
     ],
   Interior:
-    [img8],
+  [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+  ],
   Restaurant:
-    [img9],
-  "Hotel Building":
-    [img4, img6],
+  [
+    img9,
+    img10,
+    img11,
+    img12,
+    img13,
+    img14,
+    img15,
+    img16,
+  ],
 };
