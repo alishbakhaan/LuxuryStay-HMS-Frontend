@@ -33,7 +33,7 @@ const Hero = () => {
             </div>
 
             {/* checkinform */}
-            <div className="absolute md:top-3/4 left-0 right-0 transform -translate-y-1/2">
+            <div className="absolute md:top-1/2 left-0 right-0 transform -translate-y-1/2">
                 <CheckInForm />
             </div>
             

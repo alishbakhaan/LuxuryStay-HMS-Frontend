@@ -1,12 +1,66 @@
+import { faEye, faEyeSlash, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
 export default function LoginModal({ isOpen, onClose }) {
     if (!isOpen) return null;
+
+    const [formData, setFormData] = useState({
+        usernameorEmail: "",
+        password: "",
+    });
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const [token, setToken] = useState("");
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        const { usernameorEmail, password } = formData;
+
+        if (!usernameorEmail) {
+            toast.error("Please provide either an email or username");
+            return;
+        }
+
+        if (!password) {
+            toast.error("Password is required");
+            return;
+        }
+
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, formData
+            );
+
+            const userToken = response.data.token;
+
+            setToken(userToken);
+
+            localStorage.setItem("authToken", userToken);
+
+            toast.success(response.data.message || "Login successful!");
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Error occurred during login.");
+            console.error("Error occurred during Login:", error);
+        }
+    };
     return (
         <div
-            className="fixed inset-0 flex items-center justify-center z-50"
-            onClick={onClose}
+        className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur-sm"          
         >
             <div
-                className="relative w-full max-w-lg px-4 h-full md:h-auto rounded-lg shadow bg-[#121313] border"
+                className="relative w-full max-w-lg px-4 h-auto rounded-lg shadow bg-[#121313] border"
                 onClick={(e) => e.stopPropagation()}
             >
 
@@ -30,58 +84,71 @@ export default function LoginModal({ isOpen, onClose }) {
                         </svg>
                     </button>
                 </div>
+                <div className="space-y-2 px-6 pb-6">
+                <h3 className="text-5xl font-medium text-white font-[Unbounded]">Login</h3> 
+                   <h3 className="text-2xl font-medium text-[#CDB9FF]">Welcome Back!</h3>    
+                    <p className="text-xs tracking-widest">Let’s get started on making your experience seamless and productive!</p>
+                </div>
                 {/* login form */}
-                <form className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8">
-                    <h3 className="text-4xl font-medium text-white">
-                        Sign In
-                    </h3>
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="text-sm font-medium block mb-2 text-gray-300"
-                        >
-                            Your email
-                        </label>
+                <form className="space-y-6 px-6 pb-6" onSubmit={handleLogin}>
+                   
+
+                    {/* Username or Email */}
+                    <div className="mb-4 relative border border-gray-300 rounded-md focus-within:ring-2 focus-within:ring-cyan-500 bg-[#121313]">
+                        <span className="absolute inset-y-0 left-0 px-3 flex items-center pl-3 bg-gray-500 rounded-l-md">
+                            <FontAwesomeIcon icon={faUser} />
+                        </span>
                         <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
-                            placeholder="name@company.com"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="text-sm font-medium block mb-2 text-gray-300"
-                        >
-                            Your password
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="••••••••"
-                            className="border sm:text-sm rounded-lg outline-none block w-full p-2.5 bg-[#313135] border-gray-500 placeholder-gray-400 text-white"
-                            required
+                            type="text"
+                            name="usernameorEmail"
+                            id="usernameorEmail"
+                            value={formData.usernameorEmail}
+                            onChange={handleInputChange}
+                            placeholder="Enter UserName or Email"
+                            className="w-full pl-12 pr-12 py-2 bg-transparent text-white placeholder-gray-400 focus:outline-none"
                         />
                     </div>
 
+                        {/* password Field */}
+                    <div className="mb-4 relative border border-gray-300 rounded-md focus-within:ring-2 focus-within:ring-cyan-500 bg-[#121313]">
+                        <span className="absolute inset-y-0 left-0 px-3 flex items-center pl-3 bg-gray-500 rounded-l-md">
+                            <FontAwesomeIcon icon={faLock} />
+                        </span>
+
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            id="password"
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            placeholder="Enter your password"
+                            className="w-full pl-12 pr-12 py-2 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                        />
+
+                        <span
+                            className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                        >
+                            {showPassword ? (
+                                <FontAwesomeIcon icon={faEye} />
+                            ) : (
+                                <FontAwesomeIcon icon={faEyeSlash} />
+                            )}
+                        </span>
+                    </div>
+
+                    {/* Login Button */}
                     <button
                         type="submit"
-                        className="btn w-full text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center "
+                        className="btn w-full text-white focus:ring-0 font-medium rounded-lg text-lg px-5 py-2.5 text-center"
                     >
-                            Login to your account
+                        Login to your account
                     </button>
-                    <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                        <a href="#" className="text-[#CDB9FF] hover:underline">
-                            Forgot Password?
-                        </a>
-                    </div>
+
                 </form>
+
             </div>
+            <ToastContainer />
         </div>
     );
 }
-

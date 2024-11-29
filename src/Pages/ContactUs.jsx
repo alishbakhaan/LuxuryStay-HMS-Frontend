@@ -7,35 +7,35 @@ const contactus = [
     icon: faComment,
     title: "Chat to support",
     desc: "we're here to help",
-    href: "https://wa.me/1234567890", // Replace with your WhatsApp number
+    href: "https://wa.me/1234567890",
     link: "Chat with us",
   },
   {
     icon: faMap,
     title: "Visit us",
     desc: "Visit our hotel",
-    href: "https://facebook.com/luxurystay", // Replace with your Facebook page link
+    href: "https://facebook.com/luxurystay",
     link: "ViewonGoogleMap",
   },
   {
     icon: faEnvelope,
     title: "Email Us",
     desc: "Email us for any query",
-    href: "mailto:luxurystay@gmail.com", // Replace with your Instagram profile link
+    href: "mailto:luxurystay@gmail.com", 
     link: "luxurystay@gmail.com",
   },
   {
     icon: faPhone,
     title: "Call Us",
     desc: "Need help? Call our support team",
-    href: "tel:+1234567890", // Replace with your phone number
+    href: "tel:+1234567890",
     link: "+123 456 7890",
   },
 ];
 
 const ContactUs = () => {
   return (
-    <div className="md:pt-40 pt-10 ">
+    <div className="md:pt-40 pt-10 mx-10">
       <div className='h-1 w-20 bg-cyan-400 rounded-xl mx-auto my-5'></div>
       <h1 className="text-5xl font-bold text-white font-[Unbounded] text-center">
         Contact Our Friendly Team

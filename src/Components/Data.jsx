@@ -42,6 +42,32 @@ import hotellobby4 from "../assets/hotellobby (4).jpg";
 import hotellobby5 from "../assets/hotellobby (5).jpg";
 import hotellobby6 from "../assets/hotellobby (6).jpg";
 import hotellobby7 from "../assets/hotellobby (7).jpg";
+import servicesimg1 from '../assets/roommangement.jpg'
+import servicesimg2 from '../assets/concreige.jpeg'
+import servicesimg3 from '../assets/wellness.jpg'
+import servicesimg4 from '../assets/bussiness.jpg'
+import servicesimg5 from '../assets/dining.jpg'
+import servicesimg6 from '../assets/event.jpg'
+import servicesimg7 from '../assets/member.png'
+import { faCheckToSlot, faComment, faHomeLg, faImage, faNewspaper, faPhone, faSliders } from "@fortawesome/free-solid-svg-icons";
+
+export const imageSources = [
+  { imgSrc : servicesimg1 },
+  { imgSrc : servicesimg2} ,
+  { imgSrc : servicesimg3 },
+  { imgSrc : servicesimg4} ,
+  { imgSrc : servicesimg5 },
+  { imgSrc : servicesimg6} ,
+  { imgSrc : servicesimg7 },
+  { imgSrc : servicesimg1 },
+  { imgSrc : servicesimg2} ,
+  { imgSrc : servicesimg3 },
+  { imgSrc : servicesimg4} ,
+  { imgSrc : servicesimg5 },
+  { imgSrc : servicesimg6} ,
+  { imgSrc : servicesimg7 },
+ 
+];
 
 export const services = [
   { info: "Room Management", name: "Experience the pinnacle of luxury with smart room technology.", tag: "High-speed Wi-Fi" },
@@ -50,7 +76,7 @@ export const services = [
   { info: "Business Facilities", name: "We provide state-of-the-art meeting rooms and conference halls with modern amenitie.", tag: "Administrative assistance" },
   { info: "Dining Experiences", name: "Savor the finest cuisine crafted by award-winning chefs at our on-site restaurants and bars.", tag: "Customizable menu options" },
   { info: "Event Management", name: "Whether it’s a wedding or private celebration, our dedicated event planning team ensures every detail is taken care of.", tag: "Customizable venues" },
-  { info: "Member Benefits", name: "Join our Luxury Stay Rewards Program to unlock exclusive benefits, including early check-in, late check-out, complimentary upgrades, and more.", tag: "Access to member-only events" },
+  { info: "Member Benefits", name: "Join our Luxury Stay Rewards Program to unlock exclusive benefits, including early check-in and late check-out.", tag: "Access to member-only events" },
 ]
 
 export const blogCard = [
@@ -133,17 +159,18 @@ export const blog = {
 
 export const navigation = {
   pages: [
-    { name: 'Home', href: '/' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Booking', href: '/selectroom' },  
-    { name: 'Blog', href: '/blog' },
-    { name: 'Services', href: '/services' },
-    { name: 'ContactUs', href: '/contact' },
+    { name: 'Home', href: '/' , icon: faHomeLg},
+    { name: 'Gallery', href: '/gallery' , icon: faImage},
+    { name: 'Booking', href: '/selectroom' , icon: faCheckToSlot},  
+    { name: 'Blog', href: '/blog' , icon: faNewspaper},
+    { name: 'Services', href: '/services' , icon: faComment},
+    { name: 'ContactUs', href: '/contact' , icon: faPhone},
   ],
   categories: [
     {
       id: 'Accomodation',
       name: 'Accomodation',
+      icon: faSliders,
       featured: [
         {
           name: 'BathTub Relaxation',

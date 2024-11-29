@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <Router>
-      <div className="max-w-[1380px] m-auto">
+      <div className="">
       <Navbar />
       <Routes>
         <Route path="/" element={<Page />} />
