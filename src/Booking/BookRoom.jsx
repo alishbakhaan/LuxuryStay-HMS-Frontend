@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const BookRoom = () => {
     const [agreed, setAgreed] = useState(false)
@@ -37,7 +38,8 @@ const BookRoom = () => {
                 const result = await response.json();
                 setRoomPrice(result.price);
             } catch (error) {
-                alert(error.message);
+                // alert(error.message);
+                toast.error(error.message);
             }
         };
         fetchRoomDetails();
@@ -53,7 +55,8 @@ const BookRoom = () => {
 
         const checkInFormData = JSON.parse(localStorage.getItem('checkInFormData'));
         if (!checkInFormData) {
-            alert('Check-in form data is missing!');
+            // alert('Check-in form data is missing!');
+            toast.error('Check-in form data is missing!');
             return;
         }
         
@@ -62,7 +65,6 @@ const BookRoom = () => {
             room: roomId,
             checkIn: checkInFormData.start,
             checkOut: checkInFormData.end,
-            services: [],
             totalAmount: roomPrice
         };
 
@@ -79,14 +81,18 @@ const BookRoom = () => {
             if (response.ok) {
                 const data = await response.json();
                 const reservationId = data.reservation._id;
-                navigate(`/invoiceroom/${reservationId}`);
+                navigate(`/paymentroom/${reservationId}`);
             } else {
                 const errorData = await response.json();
-                alert(errorData.message || 'Failed to reserve the room');
+                // alert(errorData.message || 'Failed to reserve the room');
+                toast.error(errorData.message || 'Failed to reserve the room');
+                
             }
         } catch (error) {
             console.error(error);
-            alert('Error reserving the room.');
+            // alert('Error reserving the room.');
+            toast.error('Error reserving the room.');
+            
         }
     };
 
@@ -259,6 +265,7 @@ const BookRoom = () => {
                 </div>
 
             </div>
+            <ToastContainer/>
         </div>
     )
 }

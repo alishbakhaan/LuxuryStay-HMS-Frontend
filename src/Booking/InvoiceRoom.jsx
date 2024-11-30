@@ -73,9 +73,9 @@ const InvoiceRoom = () => {
                         {/* <!-- Card form --> */}
                         
                             <div className='py-6'>
-                                <h2 className="text-2xl font-bold">Hey {reservationDetails.guest.profile.name},</h2>
+                                <h2 className="text-2xl font-bold">Hey {reservationDetails.reservation.guest.profile.name},</h2>
                                 <p className="text-sm font-extralight mt-2">
-                                Your room has been successfully booked! Enjoy a luxurious stay at our hotel. Please bring this
+                                Your room ({reservationDetails.reservation.room.roomName + ' - ' + reservationDetails.reservation.room.roomNumber}) has been successfully booked! Enjoy a luxurious stay at our hotel. Please bring this
                                 invoice receipt with you upon arrival for a smooth check-in experience. We look forward to welcoming you! 
                                 </p>
 
@@ -83,11 +83,15 @@ const InvoiceRoom = () => {
                                     <div className="flex justify-between">
                                         <div>
                                             <p className="text-gray-500 text-sm">Payment No.</p>
-                                            <strong>#88305</strong>
+                                            <strong>{reservationDetails.billing._id}</strong>
                                         </div>
                                         <div className="text-right">
                                             <p className="text-gray-500 text-sm">Payment Date</p>
-                                            <strong>Feb/09/20</strong>
+                                            <strong>{new Date(reservationDetails.billing.issuedAt).toLocaleDateString("en-GB", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                        })}</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -96,12 +100,12 @@ const InvoiceRoom = () => {
                                     <div className="flex justify-between">
                                         <div>
                                             <p className="text-gray-500 text-sm">Client</p>
-                                            <strong>{reservationDetails.guest.profile.name}</strong>
+                                            <strong>{reservationDetails.reservation.guest.profile.name}</strong>
                                             <p className="text-sm">
                                                 {/* 989 5th Avenue, New York, 55832 */}
                                                 <br />
                                                 <a href="mailto:john@email.com" className="text-[#CDB9FF]">
-                                                {reservationDetails.guest.profile.contact.email}
+                                                {reservationDetails.reservation.guest.profile.contact.email}
                                                 </a>
                                             </p>
                                         </div>
@@ -118,25 +122,27 @@ const InvoiceRoom = () => {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td className="px-0 py-2">{reservationDetails.room.roomName}</td>
-                                            <td className="px-0 py-2">{reservationDetails.room.persons}</td>
-                                            <td className="px-0 py-2 text-right">{reservationDetails.totalAmount}</td>
+                                        <td className="px-0 py-2">{reservationDetails.reservation.room.roomName}</td>
+                                        <td className="px-0 py-2">{reservationDetails.reservation.room.persons}</td>
+                                        <td className="px-0 py-2">{new Date(reservationDetails.reservation.checkIn).toLocaleDateString("en-GB", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                        })}</td>
+                                        <td className="px-0 py-2">{new Date(reservationDetails.reservation.checkOut).toLocaleDateString("en-GB", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                        })}</td>
+                                        <td className="px-0 py-2 text-right">{reservationDetails.reservation.totalAmount}</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <div className="mt-5">
-                                    {/* <div className="flex justify-end">
-                                        <p className="text-gray-500 mr-3">Subtotal:</p>
-                                        <span>$390.00</span>
-                                    </div>
-                                    <div className="flex justify-end">
-                                        <p className="text-gray-500 mr-3">Discount:</p>
-                                        <span>-$40.00</span>
-                                    </div> */}
                                     <div className="flex justify-end mt-3">
                                         <h5 className="mr-3 text-lg font-bold">Total:</h5>
-                                        <h5 className="text-lg font-bold text-cyan-500">{reservationDetails.totalAmount}</h5>
+                                        <h5 className="text-lg font-bold text-cyan-500">{reservationDetails.reservation.totalAmount}</h5>
                                     </div>
                                 </div>
                             </div>

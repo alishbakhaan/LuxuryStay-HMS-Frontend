@@ -10,8 +10,8 @@ const SelectRoom = () => {
     const fetchRooms = async () => {
       try {
         const checkInFormData = JSON.parse(localStorage.getItem("checkInFormData"));
-        const { start, end } = checkInFormData || {};
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/rooms/available?start=${start}&end=${end}`, {
+        const { start, end, guests } = checkInFormData || {};
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/rooms/available?start=${start}&end=${end}&guests=${guests}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const SelectRoom = () => {
     fetchRooms();
   }, []);
   useEffect(() => {
-
+    
   }, [rooms]);
 
   return (

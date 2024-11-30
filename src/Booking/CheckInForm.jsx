@@ -4,24 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faSearchLocation, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const CheckInForm = () => {
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const [creds, setcreds] = useState({
-    guests: '',
+    guests: "",
   });
+  
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
-    setcreds({ ...creds, start: date });
   };
-
+  
   const handleEndDateChange = (date) => {
     setEndDate(date);
-    setcreds({ ...creds, end: date });
   };
+  
 
   const onChange = (e) => {
     setcreds({ ...creds, [e.target.name]: e.target.value });
@@ -29,21 +30,26 @@ const CheckInForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
+    if (!startDate || !endDate || !creds.guests) {
+      toast.error("Please select all fields: Check-in date, Check-out date, and Guests.");
+      return;
+    }
+  
     const formData = {
-      start: startDate,
-      end: endDate,
+      start: startDate, // Use startDate state instead of creds.start
+      end: endDate,     // Use endDate state instead of creds.end
       guests: creds.guests,
     };
+    localStorage.setItem("checkInFormData", JSON.stringify(formData));
 
-    localStorage.setItem('checkInFormData', JSON.stringify(formData));
-
-    console.log('Form data saved to localStorage:', formData);
+    console.log("Form data saved to localStorage:", formData);
     navigate('/selectroom');
   };
 
   return (
     <div className="flex justify-center items-center m-2">
+      <ToastContainer/>
       <form
         onSubmit={handleSubmit}
         className="flex md:flex-row flex-col justify-center items-center md:shadow-sm shadow-xl md:shadow-[#121313] shadow-cyan-800 rounded-3xl bg-[#121313] xl:max-w-7xl md:max-w-5xl w-full p-6 gap-4"
