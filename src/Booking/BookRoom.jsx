@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Field, Label, Switch } from '@headlessui/react'
-import logo from '../assets/logo.png';
+import logo from '../assets/website/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -19,7 +19,7 @@ const BookRoom = () => {
     const [roomPrice, setRoomPrice] = useState("");
     const { roomId } = useParams();
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (!roomId) {
             alert('Room ID not found!');
@@ -38,8 +38,9 @@ const BookRoom = () => {
                 const result = await response.json();
                 setRoomPrice(result.price);
             } catch (error) {
-                // alert(error.message);
                 toast.error(error.message);
+            } finally {
+                setLoading(false);
             }
         };
         fetchRoomDetails();
@@ -55,11 +56,10 @@ const BookRoom = () => {
 
         const checkInFormData = JSON.parse(localStorage.getItem('checkInFormData'));
         if (!checkInFormData) {
-            // alert('Check-in form data is missing!');
             toast.error('Check-in form data is missing!');
             return;
         }
-        
+
         const payload = {
             guest: formData,
             room: roomId,
@@ -81,21 +81,20 @@ const BookRoom = () => {
             if (response.ok) {
                 const data = await response.json();
                 const reservationId = data.reservation._id;
-                navigate(`/paymentroom/${reservationId}`);
+                navigate(`/invoiceroom/${reservationId}`);
             } else {
                 const errorData = await response.json();
-                // alert(errorData.message || 'Failed to reserve the room');
                 toast.error(errorData.message || 'Failed to reserve the room');
-                
+
             }
         } catch (error) {
-            console.error(error);
-            // alert('Error reserving the room.');
+            console.log(error);
             toast.error('Error reserving the room.');
-            
         }
     };
-
+    if (loading) {
+        return <p>Loading...</p>;
+    }
     return (
         <div className="isolate px-6 py-24 sm:py-32 lg:px-8 ">
             <div
@@ -139,7 +138,7 @@ const BookRoom = () => {
 
                             <div>
                                 <input
-                                required
+                                    required
                                     id="firstName"
                                     name="firstName"
                                     type="text"
@@ -151,7 +150,7 @@ const BookRoom = () => {
 
                             <div>
                                 <input
-                                required
+                                    required
                                     id="lastName"
                                     name="lastName"
                                     type="text"
@@ -163,7 +162,7 @@ const BookRoom = () => {
 
                             <div>
                                 <input
-                                required
+                                    required
                                     id="phoneNumber"
                                     name="phoneNumber"
                                     type='number'
@@ -176,7 +175,7 @@ const BookRoom = () => {
 
                             <div>
                                 <input
-                                required
+                                    required
                                     id="email"
                                     name="email"
                                     type="email"
@@ -189,7 +188,7 @@ const BookRoom = () => {
 
                             <div>
                                 <input
-                                required
+                                    required
                                     id="country"
                                     name="country"
                                     type="text"
@@ -201,7 +200,7 @@ const BookRoom = () => {
                             </div>
                             <div>
                                 <input
-                                required
+                                    required
                                     id="city"
                                     name="city"
                                     type="text"
@@ -265,10 +264,9 @@ const BookRoom = () => {
                 </div>
 
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }
 
 export default BookRoom
-
